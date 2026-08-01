@@ -10,19 +10,13 @@ This repository contains the code to reproduce the results of the **CAP** model 
 
 2. Create and activate a Python virtual environment (Python **3.9+** recommended).
 
-### Linux / macOS
+### Linux 
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Windows
-
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
 
 3. Install the required dependencies.
 
@@ -39,13 +33,13 @@ The evaluation scripts automatically download the trained model checkpoints and 
 ### RoBERTa Backbone (λ = 2)
 
 ```bash
-python "evaluate(Roberta lambda 2).py"
+python3 evaluate_Roberta_Lambda2.py
 ```
 
 ### HateBERT Backbone (λ = 1)
 
 ```bash
-python "evaluate(HateBert lambda 1).py"
+python3 evaluate_HateBert_Lambda1.py
 ```
 
 Both scripts report:
@@ -61,25 +55,37 @@ Both scripts report:
 | File | Description |
 |------|-------------|
 | `Cap(HateBERT).ipynb` | Complete Jupyter notebook containing the HateBERT training and evaluation pipeline. |
-| `train_script(hateBERT).py` | Training script for the HateBERT backbone. |
-| `train_script(RoBERTa).py` | Training script for the RoBERTa backbone. |
+| `train_script_hateBERT.py` | Training script for the HateBERT backbone. |
+| `train_script_RoBERTa.py` | Training script for the RoBERTa backbone. |
 
 ---
 
 ## Training from Scratch
 
-To train a model from scratch, simply execute the corresponding training script.
-
-Example:
+To train a model from scratch, run the corresponding training script:
 
 ```bash
-python "train_script(hateBERT).py"
+python3 train_script_hateBERT.py
 ```
 
 or
 
 ```bash
-python "train_script(RoBERTa).py"
+python3 train_script_RoBERTa.py
 ```
 
 The required datasets will be downloaded automatically during execution.
+
+### Using Google Colab
+
+If you prefer to train the models in **Google Colab**, create a new notebook and mount your Google Drive by running:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+Then, create a new code cell and paste the full training script (`train_script_hateBERT.py` or `train_script_RoBERTa.py`) directly into the notebook. Run the cells in order to start training. The required datasets will be downloaded automatically during execution.
+
+
+> **Note:** `LAMBDA_RAT` is the weighting coefficient for the rationale supervision objective. It can be set to any desired value to reproduce different experimental configurations.
