@@ -6,7 +6,14 @@ This repository contains the code to reproduce the results of the **CAP** model 
 
 ## Setup
 
-> **Note:** If you prefer to use **Google Colab**, simply create a new notebook and paste the entire evaluation script (`evaluate_Roberta_Lambda2.py` or `evaluate_HateBert_Lambda2.py`) into a code cell.
+> **Note:** If you prefer to use **Google Colab**,create a new notebook and mount your Google Drive by running:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+Then, create a new code cell and paste the full evaluation script (`evaluate_Roberta_Lambda2.py` or `evaluate_HateBert_Lambda2.py`) into a code cell.
 >
 > No additional setup is required. All required Python packages will be installed automatically, the pretrained model will be downloaded from **Hugging Face**, and the **HateXplain** dataset will be retrieved automatically from the original GitHub repository. Once the setup is complete, run the notebook cells in order to reproduce the evaluation results.
 
